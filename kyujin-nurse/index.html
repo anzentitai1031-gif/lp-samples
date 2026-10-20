@@ -81,7 +81,7 @@
     display: inline-block; background: var(--main); color: #fff; font-weight: 700;
     font-size: 14px; padding: 4px 14px; border-radius: 999px; margin: 0 0 18px;
   }
-  .fv h1 { font-size: clamp(32px, 5.4vw, 54px); line-height: 1.35; margin: 0 0 16px; color: var(--main); font-weight: 900; letter-spacing: .01em; }
+  .fv h1 { font-size: clamp(32px, 5.4vw, 54px); line-height: 1.35; word-break: keep-all; margin: 0 0 16px; color: var(--main); font-weight: 900; letter-spacing: .01em; }
   .fv h1 em { font-style: normal; background: linear-gradient(transparent 62%, #ffd9a8 62%); }
   .fv-lead { font-size: 17px; margin: 0 0 22px; }
   .fv-points { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 0 0 28px; list-style: none; }
@@ -180,7 +180,8 @@
     section { padding: 56px 0; }
     .fv { padding: 32px 0 44px; }
     .fv-grid { grid-template-columns: 1fr; }
-    .fv-illust { max-width: 360px; margin: 0 auto; order: -1; }
+    .fv-illust { width: 100%; max-width: 360px; margin: 0 auto; order: -1; }
+    .fv-illust svg { width: 100%; height: auto; }
     .scenes, .steps, .voices { grid-template-columns: 1fr; }
     .feature { grid-template-columns: 1fr; padding: 24px; }
     .feature .num { width: 84px; height: 84px; }
@@ -226,7 +227,7 @@
     <div class="wrap fv-grid">
       <div>
         <p class="fv-target">病棟の夜勤に、少し疲れてきた看護師さんへ</p>
-        <h1>夜勤なし・土日休みで、<br><em>看護をつづける。</em></h1>
+        <h1>夜勤なし・<wbr>土日休みで、<br><em>看護をつづける。</em></h1>
         <p class="fv-lead">都内の訪問看護ステーションで、訪問看護師を募集しています。<br>訪問看護がはじめての方も、ブランクがある方も歓迎です。</p>
         <ul class="fv-points">
           <li>夜勤なし</li>
