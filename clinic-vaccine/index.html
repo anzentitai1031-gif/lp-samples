@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>インフルエンザ予防接種のWeb予約｜みなと坂内科クリニック（制作サンプル）</title>
+<meta name="description" content="Web予約をゴールにした、内科クリニックの予防接種LPの制作サンプルです。掲載している医院・料金・診療時間はすべて架空です。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --main: #17707f;      /* メイン：青緑（清潔・落ち着き） */
+    --main-dark: #0f5561;
+    --mint: #e7f4f3;      /* サブ：うすいミント */
+    --cta: #e2603f;       /* 差し色：予約ボタンだけ朱色 */
+    --cta-dark: #c14c2f;
+    --text: #263238;
+    --muted: #5b6b70;
+    --line: #d9e3e4;
+    --white: #fff;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+    color: var(--text); background: var(--white); line-height: 1.85; font-size: 16px; -webkit-font-smoothing: antialiased;
+  }
+  svg { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .wrap { width: min(1080px, 100% - 32px); margin-inline: auto; }
+  .narrow { width: min(760px, 100% - 32px); margin-inline: auto; }
+  .round { font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif; }
+
+  .sample-bar { background: #263238; color: #fff; font-size: 12px; text-align: center; padding: 6px 16px; }
+  .tag-sample { display: inline-block; font-family: "Noto Sans JP", sans-serif; font-size: 11px; font-weight: 700; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 0 8px; margin-left: 6px; vertical-align: middle; background: #fff; }
+
+  /* ヘッダー */
+  header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); }
+  .header-in { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 12px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--main-dark); }
+  .logo b { font-size: 18px; line-height: 1.3; display: block; }
+  .logo small { font-size: 11px; color: var(--muted); display: block; line-height: 1.2; }
+  .header-r { display: flex; align-items: center; gap: 16px; font-size: 13px; color: var(--muted); }
+
+  /* ボタン */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--cta); color: #fff; font-weight: 700; text-decoration: none; border: 0; cursor: pointer;
+    border-radius: 999px; padding: 17px 36px; font-size: 18px; font-family: inherit;
+    box-shadow: 0 5px 0 var(--cta-dark); transition: transform .1s, box-shadow .1s;
+  }
+  .btn:hover { transform: translateY(2px); box-shadow: 0 3px 0 var(--cta-dark); }
+  .btn.sm { padding: 8px 18px; font-size: 14px; box-shadow: none; }
+  .btn svg { width: 22px; height: 22px; }
+  .micro { font-size: 13px; color: var(--muted); margin: 12px 0 0; }
+
+  /* FV（上下型：文字を先に、時期の図を下に） */
+  .fv { background: var(--mint); padding: 52px 0 0; overflow: hidden; }
+  .fv-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: end; }
+  .fv-target { display: inline-block; background: #fff; color: var(--main-dark); font-weight: 700; font-size: 14px; border-radius: 999px; padding: 4px 16px; margin: 0 0 16px; }
+  .fv h1 { font-size: clamp(30px, 4.8vw, 48px); line-height: 1.45; margin: 0 0 16px; color: var(--main-dark); word-break: keep-all; }
+  .fv h1 em { font-style: normal; color: var(--cta); }
+  .fv-lead { font-size: 17px; margin: 0 0 22px; }
+  .fv-points { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 10px; padding: 0; margin: 0 0 28px; list-style: none; }
+  .fv-points li { background: #fff; border-radius: 12px; padding: 8px 14px; font-weight: 700; color: var(--main-dark); font-size: 15px; line-height: 1.4; text-align: center; }
+  .fv-points li small { display: block; font-size: 11px; color: var(--muted); font-weight: 500; }
+  .fv-left { padding-bottom: 52px; }
+  .fv-card { background: #fff; border-radius: var(--radius) var(--radius) 0 0; padding: 26px 26px 30px; box-shadow: 0 -6px 30px rgba(23,112,127,.10); }
+  .fv-card h2 { font-size: 18px; text-align: left; margin: 0 0 14px; }
+
+  /* 時期の図 */
+  .season { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin: 0 0 10px; }
+  .season div { text-align: center; font-size: 12px; color: var(--muted); }
+  .season .bar { height: 28px; border-radius: 6px; background: #eef2f3; margin-bottom: 4px; }
+  .season .shot .bar { background: var(--main); }
+  .season .wait .bar { background: repeating-linear-gradient(45deg, #9ccfd4 0 6px, #c9e6e8 6px 12px); }
+  .season .peak .bar { background: #f3b4a3; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; margin: 0; padding: 0; list-style: none; }
+  .legend li { display: flex; align-items: center; gap: 6px; }
+  .legend i { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+  .src { font-size: 11px; color: var(--muted); margin: 10px 0 0; }
+
+  /* セクション共通 */
+  section { padding: 76px 0; }
+  .sec-label { color: var(--main); font-weight: 700; font-size: 13px; letter-spacing: .16em; text-align: center; margin: 0 0 6px; }
+  h2 { font-size: clamp(23px, 3.4vw, 32px); line-height: 1.55; text-align: center; margin: 0 0 38px; color: var(--main-dark); }
+  .bg-mint { background: var(--mint); }
+
+  /* 悩み */
+  .worries { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .worry { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 22px; text-align: center; }
+  .worry .ic { width: 64px; height: 64px; margin: 0 auto 12px; border-radius: 50%; background: var(--mint); display: grid; place-items: center; }
+  .worry b { display: block; color: var(--main-dark); font-size: 17px; margin-bottom: 4px; }
+  .worry p { margin: 0; font-size: 15px; text-align: left; }
+
+  /* 3つの工夫 */
+  .ideas { display: grid; gap: 22px; }
+  .idea { display: grid; grid-template-columns: 96px 1fr; gap: 22px; background: #fff; border-radius: var(--radius); padding: 26px; box-shadow: 0 4px 22px rgba(23,112,127,.08); }
+  .idea .n { width: 96px; height: 96px; border-radius: 24px; background: var(--mint); display: grid; place-items: center; color: var(--main); font-size: 34px; font-weight: 700; }
+  .idea h3 { margin: 0 0 6px; font-size: 21px; color: var(--main-dark); line-height: 1.5; }
+  .idea p { margin: 0; }
+  .idea .benefit { margin-top: 10px; font-weight: 500; color: var(--main-dark); }
+
+  /* 料金 */
+  .price { width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
+  .price th, .price td { padding: 16px 18px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  .price tr:last-child th, .price tr:last-child td { border-bottom: 0; }
+  .price th { width: 38%; background: #f5fafa; color: var(--main-dark); }
+  .price td b { font-size: 22px; color: var(--text); }
+  .note { font-size: 14px; color: var(--muted); margin: 14px 0 0; }
+
+  /* 当日の流れ */
+  .flow { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; counter-reset: f; }
+  .flow li { background: #fff; border-radius: var(--radius); padding: 22px 18px; border: 2px solid var(--mint); counter-increment: f; }
+  .flow li::before { content: counter(f); display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--main); color: #fff; font-weight: 700; margin-bottom: 8px; }
+  .flow b { display: block; color: var(--main-dark); font-size: 17px; margin-bottom: 4px; }
+  .flow p { margin: 0; font-size: 14.5px; }
+
+  /* 受ける前に */
+  .caution { background: #fff7f4; border: 1px solid #f3cfc4; border-radius: var(--radius); padding: 24px 26px; }
+  .caution h3 { margin: 0 0 8px; color: var(--cta-dark); font-size: 18px; }
+  .caution ul { margin: 0; padding-left: 1.2em; }
+
+  /* 予約フォーム */
+  .form { background: #fff; border-radius: var(--radius); padding: 30px; box-shadow: 0 6px 28px rgba(23,112,127,.10); }
+  .field { margin-bottom: 22px; }
+  .field > label, .field > .lbl { display: block; font-weight: 700; color: var(--main-dark); margin-bottom: 8px; }
+  .req { font-size: 11px; color: #fff; background: var(--cta); border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: 2px; }
+  .days { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; }
+  .days input { position: absolute; opacity: 0; pointer-events: none; }
+  .days label { display: block; text-align: center; border: 2px solid var(--line); border-radius: 12px; padding: 8px 4px; cursor: pointer; font-size: 14px; line-height: 1.4; }
+  .days label small { display: block; font-size: 11px; color: var(--muted); }
+  .days input:checked + label { border-color: var(--main); background: var(--mint); color: var(--main-dark); font-weight: 700; }
+  .days input:focus-visible + label { outline: 3px solid #9ccfd4; }
+  select, input[type=text], input[type=tel] { width: 100%; font: inherit; padding: 12px 14px; border: 2px solid var(--line); border-radius: 10px; background: #fff; }
+  select:focus, input:focus { outline: none; border-color: var(--main); }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .check { display: flex; gap: 8px; align-items: flex-start; font-size: 15px; }
+  .check input { width: 18px; height: 18px; margin-top: 5px; accent-color: var(--main); }
+  .form .btn { width: 100%; }
+  .form-msg { display: none; margin: 16px 0 0; padding: 14px 16px; border-radius: 10px; font-size: 15px; }
+  .form-msg.ok { display: block; background: var(--mint); color: var(--main-dark); }
+  .form-msg.ng { display: block; background: #fff1ed; color: var(--cta-dark); }
+
+  /* FAQ */
+  .faq details { background: #fff; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 10px; }
+  .faq summary { cursor: pointer; padding: 18px 48px 18px 54px; font-weight: 700; position: relative; list-style: none; color: var(--main-dark); }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::before { content: "Q"; position: absolute; left: 20px; top: 15px; color: var(--main); font-size: 20px; font-weight: 700; }
+  .faq summary::after { content: "+"; position: absolute; right: 20px; top: 14px; font-size: 22px; color: var(--muted); }
+  .faq details[open] summary::after { content: "−"; }
+  .faq .a { padding: 0 20px 18px 54px; margin: 0; }
+
+  footer { background: #10363d; color: #c3d6d9; font-size: 13px; padding: 40px 0 110px; }
+  .foot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  footer dl { display: grid; grid-template-columns: 90px 1fr; gap: 6px 14px; margin: 0; }
+  footer dt { color: #fff; }
+  footer dd { margin: 0; }
+  .hours { width: 100%; border-collapse: collapse; text-align: center; }
+  .hours th, .hours td { border: 1px solid rgba(255,255,255,.18); padding: 6px 4px; font-weight: 400; }
+  .hours th { color: #fff; }
+  .credit { margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.14); }
+
+  .sticky-cta { display: none; }
+
+  @media (max-width: 860px) {
+    body { font-size: 15px; }
+    section { padding: 58px 0; }
+    .fv { padding-top: 34px; }
+    .fv-grid { grid-template-columns: 1fr; gap: 0; }
+    .fv-left { padding-bottom: 32px; }
+    .fv-points { grid-template-columns: repeat(3, 1fr); }
+    .header-r .tel { display: none; }
+    .header-r .btn.sm { display: none; }
+    .worries, .flow { grid-template-columns: 1fr; }
+    .idea { grid-template-columns: 1fr; padding: 22px; }
+    .idea .n { width: 64px; height: 64px; font-size: 24px; border-radius: 18px; }
+    .price th, .price td { display: block; width: 100%; }
+    .price th { border-bottom: 0; padding-bottom: 4px; }
+    .row2 { grid-template-columns: 1fr; }
+    .form { padding: 22px 18px; }
+    .btn { width: 100%; font-size: 17px; padding: 16px 20px; }
+    .foot-grid { grid-template-columns: 1fr; }
+    .sticky-cta { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.97); border-top: 1px solid var(--line); }
+    .sticky-cta .btn { box-shadow: none; padding: 14px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sample-bar">これはクリニックの予約LPの<strong>制作サンプル</strong>です。医院・料金・診療時間はすべて架空です（制作：MY）</div>
+
+<header>
+  <div class="wrap header-in">
+    <a class="logo" href="#top" aria-label="みなと坂内科クリニック トップへ">
+      <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#17707f"/><path d="M18 10v16M10 18h16" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
+      <span><small>内科・予防接種</small><b class="round">みなと坂内科クリニック</b></span>
+    </a>
+    <div class="header-r">
+      <span class="tel">お電話 00-0000-0000（受付 9:00〜18:00）</span>
+      <a class="btn sm" href="#reserve">Web予約</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- FV（Q） -->
+  <div class="fv">
+    <div class="wrap fv-grid">
+      <div class="fv-left">
+        <p class="fv-target">仕事や家事で、平日に時間をとりにくい方へ</p>
+        <h1 class="round">インフルエンザの予防接種は、<br><em>Webで予約</em>して、<br>待たずに受ける。</h1>
+        <p class="fv-lead">接種の時間を予約してから来院できます。問診票もスマホで先に書けるので、院内にいる時間を短くできます。</p>
+        <ul class="fv-points">
+          <li>24時間<small>Webで予約</small></li>
+          <li>問診票は<small>スマホで先に</small></li>
+          <li>土曜も<small>午前に接種</small></li>
+        </ul>
+        <a class="btn" href="#reserve">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3" fill="none" stroke="#fff" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+          空いている日を見る
+        </a>
+        <p class="micro">会員登録はいりません。予約は1分ほどで終わります</p>
+      </div>
+
+      <div class="fv-card">
+        <h2 class="round">いつ受けるのがいい？</h2>
+        <div class="season" aria-hidden="true">
+          <div class="shot"><div class="bar"></div>10月</div>
+          <div class="shot"><div class="bar"></div>11月</div>
+          <div class="wait"><div class="bar"></div>12月</div>
+          <div class="peak"><div class="bar"></div>1月</div>
+          <div class="peak"><div class="bar"></div>2月</div>
+          <div class="peak"><div class="bar"></div>3月</div>
+          <div><div class="bar"></div>4月</div>
+        </div>
+        <ul class="legend">
+          <li><i style="background:#17707f"></i>接種におすすめの時期</li>
+          <li><i style="background:#9ccfd4"></i>12月中旬までに</li>
+          <li><i style="background:#f3b4a3"></i>例年の流行期</li>
+        </ul>
+        <p style="margin:14px 0 0;font-size:15px">ワクチンが効き始めるまで約2週間、効果が続くのは約5か月が目安です。流行が始まる前、<b>12月中旬までの接種</b>がすすめられています。</p>
+        <p class="src">参考：厚生労働省の資料、自治体の予防接種説明書</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 悩み（U） -->
+  <section>
+    <div class="wrap">
+      <p class="sec-label">WORRY</p>
+      <h2 class="round">受けたいとは、思っている。<br>でも、つい後回しになっていませんか。</h2>
+      <div class="worries">
+        <div class="worry">
+          <div class="ic" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 34 34"><path d="M9 6h5l2 6-3 2a16 16 0 0 0 7 7l2-3 6 2v5c0 1-1 2-2 2C14 27 7 20 7 8c0-1 1-2 2-2z" fill="none" stroke="#17707f" stroke-width="2.2" stroke-linejoin="round"/></svg></div>
+          <b>電話がつながらない</b>
+          <p>昼休みに電話をしても話し中。かけ直すうちに、休憩が終わってしまう。</p>
+        </div>
+        <div class="worry">
+          <div class="ic" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="11" fill="none" stroke="#17707f" stroke-width="2.2"/><path d="M17 11v6l4 3" stroke="#17707f" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></div>
+          <b>待合室で長く待ちたくない</b>
+          <p>咳をしている人の隣で、何十分も順番を待つのは気が進まない。</p>
+        </div>
+        <div class="worry">
+          <div class="ic" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 34 34"><rect x="7" y="8" width="20" height="19" rx="3" fill="none" stroke="#17707f" stroke-width="2.2"/><path d="M7 14h20M12 5v5M22 5v5" stroke="#17707f" stroke-width="2.2" stroke-linecap="round"/><text x="17" y="24" font-size="9" text-anchor="middle" fill="#17707f" font-weight="700">?</text></svg></div>
+          <b>いつがいいか分からない</b>
+          <p>早すぎると効果が切れる気がするし、遅いと間に合わない気もする。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 解決策（E） -->
+  <section class="bg-mint">
+    <div class="narrow">
+      <p class="sec-label">FEATURES</p>
+      <h2 class="round">短い時間で受けられるように、<br>3つの工夫をしています</h2>
+      <div class="ideas">
+        <div class="idea">
+          <div class="n round">01</div>
+          <div>
+            <h3>予約は24時間、Webで</h3>
+            <p>空いている日と時間帯を見て、その場で予約できます。電話がつながるのを待つ必要はありません。</p>
+            <p class="benefit">→ 夜や休みの日に、思い立ったときに予約を済ませられます。</p>
+          </div>
+        </div>
+        <div class="idea">
+          <div class="n round">02</div>
+          <div>
+            <h3>問診票はスマホで先に</h3>
+            <p>予約のあとに届くリンクから、体調やアレルギーの有無を入力できます。当日は受付で名前を伝えるだけです。</p>
+            <p class="benefit">→ 院内で書く時間がなくなり、そのぶん早く帰れます。</p>
+          </div>
+        </div>
+        <div class="idea">
+          <div class="n round">03</div>
+          <div>
+            <h3>接種の方専用の時間帯</h3>
+            <p>一般の診察とは時間を分けて、予防接種の方だけを案内する枠を設けています。</p>
+            <p class="benefit">→ 体調の悪い方と長い時間、同じ待合室で過ごさずに済みます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 料金（S） -->
+  <section>
+    <div class="narrow">
+      <p class="sec-label">PRICE</p>
+      <h2 class="round">接種の料金 <span class="tag-sample">サンプル</span></h2>
+      <table class="price">
+        <tr><th>13歳以上の方（1回）</th><td><b>0,000円</b>（税込）</td></tr>
+        <tr><th>13歳未満のお子さま（1回）</th><td><b>0,000円</b>（税込）<br>13歳未満の方は、2回の接種が必要です。</td></tr>
+        <tr><th>65歳以上の方など</th><td>お住まいの区の助成が使える場合があります。自己負担の額は区のお知らせをご確認ください。</td></tr>
+      </table>
+      <p class="note">※ 予防接種は健康保険が使えないため、自費になります。<br>※ 料金はサンプルです。実際の医院では、その年の料金を記載します。</p>
+    </div>
+  </section>
+
+  <!-- 当日の流れ（T） -->
+  <section class="bg-mint">
+    <div class="wrap">
+      <p class="sec-label">FLOW</p>
+      <h2 class="round">予約から接種までの流れ</h2>
+      <ol class="flow">
+        <li><b>Webで予約</b><p>日と時間帯を選び、名前と電話番号を入力します。</p></li>
+        <li><b>問診票を入力</b><p>届いたリンクから、前日までにスマホで入力します。</p></li>
+        <li><b>来院・診察</b><p>受付で名前を伝えてください。医師が問診票を見て、体調を確認します。</p></li>
+        <li><b>接種・様子を見る</b><p>接種のあと30分ほどは、院内か近くで様子を見てください。</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 受ける前に（T：不安を消す） -->
+  <section>
+    <div class="narrow">
+      <div class="caution">
+        <h3>次の方は、予約の前にお電話でご相談ください</h3>
+        <ul>
+          <li>当日、熱がある方（その日は接種できません）</li>
+          <li>以前、予防接種のあとに体調が悪くなったことがある方</li>
+          <li>持病で治療中の方、妊娠中の方</li>
+        </ul>
+        <p class="note" style="margin-top:10px">どの場合も、受けられるかどうかは医師が問診で判断します。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 予約フォーム（CV） -->
+  <section class="bg-mint" id="reserve">
+    <div class="narrow">
+      <p class="sec-label">RESERVE</p>
+      <h2 class="round">Web予約</h2>
+      <form class="form" id="form" novalidate>
+        <div class="field">
+          <span class="lbl">希望の日<span class="req">必須</span></span>
+          <div class="days" id="days"></div>
+        </div>
+        <div class="field">
+          <label for="slot">時間帯<span class="req">必須</span></label>
+          <select id="slot" name="slot" required>
+            <option value="">選んでください</option>
+            <option>9:00〜10:00</option>
+            <option>10:00〜11:00</option>
+            <option>15:00〜16:00</option>
+            <option>16:00〜17:00</option>
+          </select>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="name">お名前（カタカナ）<span class="req">必須</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="ヤマダ ハナコ" required>
+          </div>
+          <div class="field">
+            <label for="tel">電話番号<span class="req">必須</span></label>
+            <input type="tel" id="tel" name="tel" autocomplete="tel" inputmode="numeric" placeholder="09012345678" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="people">接種する人数</label>
+          <select id="people" name="people"><option>1人</option><option>2人</option><option>3人</option><option>4人</option></select>
+        </div>
+        <div class="field">
+          <label class="check"><input type="checkbox" name="child"> 13歳未満のお子さまが含まれる</label>
+        </div>
+        <button class="btn" type="submit">この内容で予約する</button>
+        <p class="micro" style="text-align:center">予約の変更・取り消しは、届くメッセージのリンクからできます</p>
+        <p class="form-msg" id="form-msg" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ（T） -->
+  <section class="faq">
+    <div class="narrow">
+      <p class="sec-label">FAQ</p>
+      <h2 class="round">よくある質問</h2>
+      <details><summary>予約しないで行っても受けられますか？</summary><p class="a">ワクチンの数に限りがあるため、予約の方を優先しています。空きがあれば当日も受け付けますので、お電話でご確認ください。</p></details>
+      <details><summary>家族とまとめて予約できますか？</summary><p class="a">できます。フォームの「接種する人数」を選んでください。13歳未満のお子さまがいる場合は、チェックを入れてください。</p></details>
+      <details><summary>ほかのワクチンと同じ日に受けられますか？</summary><p class="a">組み合わせによっては受けられます。予約のあと、問診票の備考欄に書くか、当日医師にご相談ください。</p></details>
+      <details><summary>接種した日に、お風呂に入ってもいいですか？</summary><p class="a">入って大丈夫です。接種したところを強くこすらないようにしてください。</p></details>
+      <details><summary>予約の日に熱が出たら、どうすればいいですか？</summary><p class="a">その日は接種できません。届いたメッセージのリンクから、予約を取り消すか日を変えてください。</p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <dl>
+        <dt>医院名</dt><dd>みなと坂内科クリニック（架空）</dd>
+        <dt>所在地</dt><dd>東京都〇〇区〇〇 1-2-3（サンプル）</dd>
+        <dt>電話番号</dt><dd>00-0000-0000（サンプル）</dd>
+        <dt>診療科目</dt><dd>内科</dd>
+      </dl>
+      <table class="hours" aria-label="診療時間（サンプル）">
+        <tr><th>診療時間</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr>
+        <tr><td>9:00〜12:00</td><td>●</td><td>●</td><td>●</td><td>－</td><td>●</td><td>●</td></tr>
+        <tr><td>15:00〜18:00</td><td>●</td><td>●</td><td>●</td><td>－</td><td>●</td><td>－</td></tr>
+      </table>
+    </div>
+    <p class="credit">このページは、クリニックの予約LPの制作サンプルです。医療広告ガイドラインに配慮し、患者さんの体験談・治療前後の比較・「最高」「一番」などの表現は使っていません。構成・原稿・デザイン・コーディング：MY</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn" href="#reserve">空いている日を見る</a></div>
+
+<script>
+  // 希望日：今日から2週間のうち、診療日（日曜・木曜を除く）を並べる
+  const wd = ["日","月","火","水","木","金","土"];
+  const days = document.getElementById("days");
+  let d = new Date(), html = "", n = 0;
+  for (let i = 1; i <= 14; i++) {
+    d = new Date(); d.setDate(d.getDate() + i);
+    if (d.getDay() === 0 || d.getDay() === 4) continue;
+    const id = "d" + i, rest = (i % 5 === 0) ? "残りわずか" : "空きあり";
+    html += `<input type="radio" name="day" id="${id}" value="${d.getMonth()+1}/${d.getDate()}"><label for="${id}">${d.getMonth()+1}/${d.getDate()}（${wd[d.getDay()]}）<small>${rest}</small></label>`;
+    if (++n >= 10) break;
+  }
+  days.innerHTML = html;
+
+  // 送信：入力漏れを示し、サンプルなので実際には送らない
+  document.getElementById("form").addEventListener("submit", e => {
+    e.preventDefault();
+    const f = e.target, msg = document.getElementById("form-msg"), miss = [];
+    if (!f.day.value) miss.push("希望の日");
+    if (!f.slot.value) miss.push("時間帯");
+    if (!f.name.value.trim()) miss.push("お名前");
+    if (!/^0\d{9,10}$/.test(f.tel.value.replace(/-/g, ""))) miss.push("電話番号（数字10〜11けた）");
+    if (miss.length) { msg.className = "form-msg ng"; msg.textContent = "入力をご確認ください：" + miss.join("、"); return; }
+    msg.className = "form-msg ok";
+    msg.textContent = `${f.day.value} ${f.slot.value} で受け付けました（サンプルのため、実際には送信されません）。`;
+  });
+</script>
+
+</body>
+</html>

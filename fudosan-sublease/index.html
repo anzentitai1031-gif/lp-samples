@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>サブリース契約の無料診断｜サブリース見直し相談室（制作サンプル）</title>
+<meta name="description" content="LINE登録をゴールにした、不動産オーナー向け無料診断LPの制作サンプルです。掲載している会社・事例・数値はすべて架空です。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1f2d3a;       /* メイン：墨紺（誠実・堅実） */
+    --ink-soft: #e9edf1;
+    --paper: #f6f4ef;     /* サブ：紙の色（落ち着き。派手さを出さない） */
+    --brand: #2f6f62;     /* 差し色：深い緑（資産・安定） */
+    --brand-soft: #e4efec;
+    --cta: #06c755;       /* LINEボタンだけ緑 */
+    --cta-dark: #05a647;
+    --text: #27313b;
+    --muted: #5d6874;
+    --line: #dcdfe3;
+    --white: #fff;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+    color: var(--text); background: var(--white);
+    line-height: 1.85; font-size: 16px; -webkit-font-smoothing: antialiased;
+  }
+  svg { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .wrap { width: min(1080px, 100% - 32px); margin-inline: auto; }
+  .narrow { width: min(780px, 100% - 32px); margin-inline: auto; }
+  .serif { font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif; }
+
+  /* サンプル表示 */
+  .sample-bar { background: #222; color: #fff; font-size: 12px; text-align: center; padding: 6px 16px; }
+  .tag-sample {
+    display: inline-block; font-family: "Noto Sans JP", sans-serif; font-size: 11px; font-weight: 700;
+    color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 0 8px;
+    margin-left: 8px; vertical-align: middle; background: var(--white); letter-spacing: 0;
+  }
+
+  /* ヘッダー */
+  header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); }
+  .header-in { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+  .logo small { display: block; font-size: 11px; color: var(--muted); line-height: 1.2; }
+  .logo b { display: block; font-size: 17px; line-height: 1.35; }
+  .header-r { display: flex; align-items: center; gap: 18px; font-size: 13px; color: var(--muted); }
+
+  /* ボタン */
+  .btn-line {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--cta); color: #fff; font-weight: 700; text-decoration: none;
+    border-radius: 8px; padding: 17px 34px; font-size: 18px;
+    box-shadow: 0 4px 0 var(--cta-dark); transition: transform .1s, box-shadow .1s;
+  }
+  .btn-line:hover { transform: translateY(2px); box-shadow: 0 2px 0 var(--cta-dark); }
+  .btn-line svg { width: 26px; height: 26px; }
+  .btn-line.sm { padding: 8px 16px; font-size: 14px; box-shadow: none; }
+  .btn-line.sm svg { width: 20px; height: 20px; }
+  .micro { font-size: 13px; color: var(--muted); margin: 12px 0 0; }
+
+  /* FV */
+  .fv { background: var(--paper); padding: 56px 0 64px; border-bottom: 1px solid var(--line); }
+  .fv-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
+  .fv-target { font-size: 15px; font-weight: 700; color: var(--brand); margin: 0 0 14px; padding-left: 12px; border-left: 4px solid var(--brand); line-height: 1.5; }
+  .fv h1 { font-size: clamp(28px, 4.4vw, 44px); line-height: 1.5; margin: 0 0 18px; color: var(--ink); word-break: keep-all; }
+  .fv h1 .quote { display: block; font-size: .72em; color: var(--muted); margin-bottom: 6px; }
+  .fv-lead { font-size: 17px; margin: 0 0 22px; }
+  .fv-points { display: flex; flex-wrap: wrap; gap: 8px 22px; padding: 0; margin: 0 0 28px; list-style: none; font-weight: 700; color: var(--ink); }
+  .fv-points li { display: flex; align-items: center; gap: 8px; }
+  .fv-points li::before { content: ""; width: 18px; height: 18px; border-radius: 50%; background: var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.5l2.5 2.5L13 6.5' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/18px no-repeat; flex: none; }
+
+  /* FV右：診断の画面イメージ（押したあとに何が起きるかを見せる） */
+  .phone { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 16px; box-shadow: 0 18px 40px rgba(31,45,58,.12); max-width: 340px; margin-left: auto; }
+  .phone-head { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--ink); padding-bottom: 10px; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+  .phone-head i { width: 28px; height: 28px; border-radius: 50%; background: var(--brand); display: grid; place-items: center; color: #fff; font-style: normal; font-size: 12px; }
+  .msg { font-size: 13.5px; line-height: 1.6; padding: 9px 12px; border-radius: 14px; margin: 0 0 8px; max-width: 88%; }
+  .msg.them { background: var(--ink-soft); border-top-left-radius: 4px; }
+  .msg.me { background: #d9f6e3; margin-left: auto; border-top-right-radius: 4px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 10px; }
+  .chips span { font-size: 12px; border: 1px solid var(--brand); color: var(--brand); border-radius: 999px; padding: 2px 10px; background: #fff; }
+  .phone-note { font-size: 11px; color: var(--muted); text-align: center; margin: 8px 0 0; }
+
+  /* セクション共通 */
+  section { padding: 80px 0; }
+  .sec-label { color: var(--brand); font-weight: 700; font-size: 13px; letter-spacing: .18em; text-align: center; margin: 0 0 8px; }
+  h2 { font-size: clamp(23px, 3.3vw, 32px); line-height: 1.6; text-align: center; margin: 0 0 40px; color: var(--ink); }
+  .bg-paper { background: var(--paper); }
+  .bg-ink { background: var(--ink); color: #fff; }
+  .bg-ink h2 { color: #fff; }
+  .bg-ink .sec-label { color: #9fd0c4; }
+
+  /* 悩み */
+  .scenes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .scene { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+  .scene .doc { font-size: 12px; font-weight: 700; color: var(--muted); border-bottom: 1px dashed var(--line); padding-bottom: 8px; margin-bottom: 10px; }
+  .scene b { display: block; color: var(--ink); font-size: 17px; line-height: 1.6; margin-bottom: 6px; }
+  .scene p { margin: 0; font-size: 15px; }
+  .bridge { text-align: center; font-size: 18px; margin: 44px 0 0; color: var(--ink); }
+  .bridge strong { background: linear-gradient(transparent 64%, #d6ebe5 64%); }
+
+  /* 4つの選択肢 */
+  .options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .option { border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; background: #fff; }
+  .option .no { font-size: 12px; font-weight: 700; color: var(--brand); letter-spacing: .1em; }
+  .option h3 { font-size: 21px; margin: 2px 0 10px; color: var(--ink); }
+  .option dl { margin: 0; display: grid; grid-template-columns: 5.5em 1fr; gap: 6px 10px; font-size: 15px; }
+  .option dt { color: var(--muted); font-weight: 700; }
+  .option dd { margin: 0; }
+  .options-note { text-align: center; font-size: 14px; color: var(--muted); margin: 24px 0 0; }
+
+  /* 診断でわかること */
+  .points { display: grid; gap: 18px; }
+  .point { display: grid; grid-template-columns: 64px 1fr; gap: 20px; align-items: start; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,.18); }
+  .point:last-child { border-bottom: 0; }
+  .point .n { font-size: 36px; line-height: 1; color: #9fd0c4; }
+  .point h3 { margin: 0 0 6px; font-size: 20px; }
+  .point p { margin: 0; color: #d7dee5; }
+  .point .benefit { margin-top: 8px; color: #fff; font-weight: 500; }
+
+  /* 流れ */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .step { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 18px; position: relative; }
+  .step .label { font-size: 12px; font-weight: 700; color: var(--brand); letter-spacing: .1em; }
+  .step h3 { font-size: 17px; margin: 4px 0 6px; color: var(--ink); line-height: 1.5; }
+  .step p { margin: 0; font-size: 14px; }
+  .promise { margin: 28px auto 0; max-width: 680px; background: var(--brand-soft); border-radius: var(--radius); padding: 18px 22px; font-size: 15px; }
+  .promise b { color: var(--brand); }
+
+  /* 事例（JSの配列から描画。公開後の追加・修正は配列を書き換えるだけ） */
+  .cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .case { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+  .case-head { background: var(--ink); color: #fff; padding: 14px 20px; font-size: 14px; line-height: 1.6; }
+  .case-head b { display: block; font-size: 16px; }
+  .case ol { list-style: none; margin: 0; padding: 18px 20px 22px; display: grid; gap: 12px; }
+  .case li { font-size: 14.5px; }
+  .case li span { display: block; font-size: 12px; font-weight: 700; color: var(--brand); }
+
+  /* FAQ */
+  .faq details { background: #fff; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 10px; }
+  .faq summary { cursor: pointer; padding: 18px 48px 18px 52px; font-weight: 700; position: relative; list-style: none; color: var(--ink); }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::before { content: "Q"; position: absolute; left: 20px; top: 16px; font-family: "Noto Serif JP", serif; color: var(--brand); font-size: 19px; }
+  .faq summary::after { content: "+"; position: absolute; right: 20px; top: 14px; font-size: 22px; color: var(--muted); }
+  .faq details[open] summary::after { content: "−"; }
+  .faq .a { padding: 0 20px 18px 52px; margin: 0; }
+
+  /* 最後のCTA */
+  .final { text-align: center; }
+  .final h2 { margin-bottom: 14px; }
+  .final .sub { margin: 0 0 30px; font-size: 17px; color: #d7dee5; }
+
+  footer { background: #141d26; color: #b9c3cd; font-size: 13px; padding: 36px 0 110px; }
+  footer dl { display: grid; grid-template-columns: 120px 1fr; gap: 6px 16px; margin: 0 0 20px; }
+  footer dt { color: #fff; }
+  footer dd { margin: 0; }
+  footer nav a { margin-right: 16px; }
+  .credit { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.14); }
+
+  .sticky-cta { display: none; }
+
+  @media (max-width: 860px) {
+    body { font-size: 15px; }
+    section { padding: 60px 0; }
+    .fv { padding: 36px 0 48px; }
+    .fv-grid { grid-template-columns: 1fr; gap: 32px; }
+    .phone { margin: 0 auto; }
+    .header-r .hours { display: none; }
+    .header-r .btn-line.sm { display: none; }
+    .scenes, .options, .cases { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .btn-line { width: 100%; font-size: 17px; padding: 16px 20px; }
+    .sticky-cta {
+      display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.97); border-top: 1px solid var(--line);
+    }
+    .sticky-cta .btn-line { box-shadow: none; padding: 14px 16px; }
+    footer dl { grid-template-columns: 1fr; }
+    footer dt { margin-top: 8px; }
+  }
+  @media (max-width: 520px) {
+    .steps { grid-template-columns: 1fr; }
+    .option dl { grid-template-columns: 1fr; gap: 0; }
+    .option dd { margin-bottom: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sample-bar">これは不動産オーナー向けLPの<strong>制作サンプル</strong>です。会社・事例・数値はすべて架空です（制作：MY）</div>
+
+<header>
+  <div class="wrap header-in">
+    <a class="logo" href="#top" aria-label="サブリース見直し相談室 トップへ">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="6" fill="#1f2d3a"/><path d="M8 25V15l9-6 9 6v10" stroke="#9fd0c4" stroke-width="2.4" fill="none" stroke-linejoin="round"/><path d="M14 25v-6h6v6" stroke="#fff" stroke-width="2.2" fill="none"/></svg>
+      <span><small>アパート・マンションオーナーのための</small><b class="serif">サブリース見直し相談室</b></span>
+    </a>
+    <div class="header-r">
+      <span class="hours">LINEの返信：平日 10:00〜18:00</span>
+      <a class="btn-line sm" href="#line" data-cta="line_header">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>
+        無料診断
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- FV（Q） -->
+  <div class="fv">
+    <div class="wrap fv-grid">
+      <div>
+        <p class="fv-target">サブリース（一括借り上げ）で、アパート・マンションを貸しているオーナーの方へ</p>
+        <h1 class="serif"><span class="quote">「家賃を下げてほしい」と言われたら。</span>返事をする前に、<br>選択肢を並べてみませんか。</h1>
+        <p class="fv-lead">いまの契約書と収支をもとに、「続ける・交渉する・やめる・売る」の4つの選択肢を整理します。どれを選ぶかは、整理を見てからオーナーさまが決めてください。</p>
+        <ul class="fv-points">
+          <li>診断は無料</li>
+          <li>LINEとオンラインで完結</li>
+          <li>売却・解約をすすめません</li>
+        </ul>
+        <a class="btn-line" href="#line" data-cta="line_fv">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>
+          LINEで無料診断をはじめる
+        </a>
+        <p class="micro">友だち追加のあと、5つの質問に答えるだけです（目安3分）</p>
+      </div>
+
+      <div class="phone" aria-label="LINEでの診断の画面イメージ">
+        <div class="phone-head"><i>相</i>サブリース見直し相談室</div>
+        <p class="msg them">ご登録ありがとうございます。はじめに、物件の種類を教えてください。</p>
+        <div class="chips"><span>アパート</span><span>マンション一棟</span><span>区分</span></div>
+        <p class="msg me">アパート</p>
+        <p class="msg them">サブリース会社から、最近どんな連絡がありましたか？</p>
+        <div class="chips"><span>賃料の減額</span><span>修繕の依頼</span><span>特になし</span></div>
+        <p class="msg me">賃料の減額</p>
+        <p class="msg them">ありがとうございます。あと3問です。</p>
+        <p class="phone-note">画面はイメージです</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 悩み（U） -->
+  <section>
+    <div class="wrap">
+      <p class="sec-label">WORRY</p>
+      <h2 class="serif">こんな連絡が届いて、<br>どう返せばいいか迷っていませんか。</h2>
+      <div class="scenes">
+        <div class="scene">
+          <div class="doc">サブリース会社からの書面</div>
+          <b>「賃料改定のお願い」</b>
+          <p>来年から借り上げ賃料を下げたい、と書いてある。断ったらどうなるのか、書面には書いていない。</p>
+        </div>
+        <div class="scene">
+          <div class="doc">管理担当者からの電話</div>
+          <b>「外壁の修繕が必要です」</b>
+          <p>見積もりは指定の会社だけ。この金額が妥当なのか、比べる先がない。</p>
+        </div>
+        <div class="scene">
+          <div class="doc">相続した物件の契約書</div>
+          <b>「この契約、続けていいの？」</b>
+          <p>親から引き継いだアパート。契約の中身を、誰にも説明されないまま毎月の入金だけが続いている。</p>
+        </div>
+      </div>
+      <p class="bridge">迷うのは、<strong>選択肢と、それぞれの損得が見えていない</strong>からです。<br>まずは並べてみるところから始めましょう。</p>
+    </div>
+  </section>
+
+  <!-- 解決策（E）：4つの選択肢 -->
+  <section class="bg-paper">
+    <div class="wrap">
+      <p class="sec-label">OPTIONS</p>
+      <h2 class="serif">サブリース契約で、<br>オーナーが選べる4つの選択肢</h2>
+      <div class="options">
+        <div class="option">
+          <span class="no">OPTION 1</span>
+          <h3 class="serif">契約を続ける</h3>
+          <dl><dt>向いている</dt><dd>空室の心配を手放したい。手間をかけずに入金を受けたい</dd><dt>確かめたい</dt><dd>次の賃料の見直し時期と、修繕費を誰が負担するか</dd></dl>
+        </div>
+        <div class="option">
+          <span class="no">OPTION 2</span>
+          <h3 class="serif">条件を交渉する</h3>
+          <dl><dt>向いている</dt><dd>減額の理由に納得できない。周りの家賃と比べたい</dd><dt>確かめたい</dt><dd>近くの似た物件の家賃と、いまの入居率</dd></dl>
+        </div>
+        <div class="option">
+          <span class="no">OPTION 3</span>
+          <h3 class="serif">契約をやめて、自分で貸す</h3>
+          <dl><dt>向いている</dt><dd>入居が安定している。管理会社を自分で選びたい</dd><dt>確かめたい</dt><dd>解約の条項と違約金。オーナー側からの解約は、契約や法律の扱いで難しいこともあります</dd></dl>
+        </div>
+        <div class="option">
+          <span class="no">OPTION 4</span>
+          <h3 class="serif">売却する</h3>
+          <dl><dt>向いている</dt><dd>ローンの残りや今後の修繕を考えると、持ち続けるのが重い</dd><dt>確かめたい</dt><dd>サブリース付きのままで売るか、外してから売るかで、価格が変わること</dd></dl>
+        </div>
+      </div>
+      <p class="options-note">どの選択肢が合うかは、契約書の中身と収支で変わります。だから、先に診断します。</p>
+    </div>
+  </section>
+
+  <!-- 診断でわかること（E） -->
+  <section class="bg-ink">
+    <div class="narrow">
+      <p class="sec-label">DIAGNOSIS</p>
+      <h2 class="serif">無料診断で、わかること</h2>
+      <div class="points">
+        <div class="point">
+          <div class="n serif">01</div>
+          <div>
+            <h3>契約書の「気をつけたい条項」</h3>
+            <p>賃料の見直し、解約、修繕費の負担について、どこに何が書いてあるかを読み解いてお伝えします。</p>
+            <p class="benefit">→ サブリース会社と話すとき、何を聞けばいいかが分かります。</p>
+          </div>
+        </div>
+        <div class="point">
+          <div class="n serif">02</div>
+          <div>
+            <h3>4つの選択肢ごとの、10年の手取りの比較</h3>
+            <p>いただいた数字をもとに、選択肢ごとの手取りの目安を1枚の表にします。</p>
+            <p class="benefit">→ 「なんとなく不安」を、数字で比べられるようになります。</p>
+          </div>
+        </div>
+        <div class="point">
+          <div class="n serif">03</div>
+          <div>
+            <h3>次にやること</h3>
+            <p>交渉するなら何を用意するか、売るならいつ誰に相談するか。次の一歩を具体的に書いてお渡しします。</p>
+            <p class="benefit">→ 返事の期限があっても、落ち着いて準備できます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 流れ（T） -->
+  <section>
+    <div class="wrap">
+      <p class="sec-label">FLOW</p>
+      <h2 class="serif">LINEを登録したあとの流れ</h2>
+      <div class="steps">
+        <div class="step"><span class="label">STEP 1</span><h3>友だち追加</h3><p>ボタンを押すだけ。名前の入力はあとからで大丈夫です。</p></div>
+        <div class="step"><span class="label">STEP 2</span><h3>5つの質問に回答</h3><p>物件の種類、届いた連絡、築年数など。選ぶだけで答えられます。</p></div>
+        <div class="step"><span class="label">STEP 3</span><h3>契約書の写真を送る</h3><p>手元にある範囲で大丈夫です。なければ口頭でうかがいます。</p></div>
+        <div class="step"><span class="label">STEP 4</span><h3>診断結果を受け取る</h3><p>3営業日以内に、LINEでお送りします。ご希望の方はオンラインで解説します。</p></div>
+      </div>
+      <p class="promise"><b>お約束：</b>売却や解約を、こちらからすすめることはありません。診断のあとに連絡をやめても、催促の連絡はしません。</p>
+    </div>
+  </section>
+
+  <!-- 事例（S） -->
+  <section class="bg-paper">
+    <div class="wrap">
+      <p class="sec-label">CASES</p>
+      <h2 class="serif">相談の事例 <span class="tag-sample">サンプル（架空）</span></h2>
+      <div class="cases" id="cases"></div>
+    </div>
+  </section>
+
+  <!-- FAQ（T） -->
+  <section class="faq">
+    <div class="narrow">
+      <p class="sec-label">FAQ</p>
+      <h2 class="serif">よくある質問</h2>
+      <details><summary>本当に無料ですか？あとから費用を請求されませんか？</summary><p class="a">診断は無料です。交渉の同席や売却の仲介など、費用がかかる手続きに進むときは、事前に金額をお伝えし、ご了承をいただいてから始めます。</p></details>
+      <details><summary>サブリース会社に、相談したことが伝わりますか？</summary><p class="a">伝わりません。オーナーさまの許可なく、サブリース会社に連絡することはありません。</p></details>
+      <details><summary>契約書が見つかりません。それでも相談できますか？</summary><p class="a">できます。毎月の入金額や、届いた書面だけでも、分かる範囲で整理します。契約書の取り寄せ方もご案内します。</p></details>
+      <details><summary>遠方の物件でも大丈夫ですか？</summary><p class="a">LINEとオンラインで完結するので、全国の物件をご相談いただけます。</p></details>
+      <details><summary>減額の返事の期限が近いのですが、間に合いますか？</summary><p class="a">期限をLINEで教えてください。期限に合わせて、先に確かめるべき点からお伝えします。</p></details>
+    </div>
+  </section>
+
+  <!-- 最後のCTA（T） -->
+  <section class="final bg-ink" id="line">
+    <div class="narrow">
+      <h2 class="serif">返事をする前に、<br>まずは選択肢を知っておく。</h2>
+      <p class="sub">LINEで5つの質問に答えるだけ。診断は無料です。</p>
+      <a class="btn-line" href="#line" data-cta="line_final" onclick="return false;">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>
+        LINEで無料診断をはじめる
+      </a>
+      <p class="micro" style="color:#b9c3cd">売却・解約はすすめません。途中でやめても催促しません<br>※サンプルのため、ボタンはLINEにつながりません</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <dl>
+      <dt>運営会社</dt><dd>株式会社ひらき不動産パートナーズ（架空）</dd>
+      <dt>所在地</dt><dd>東京都〇〇区〇〇 1-2-3（サンプル）</dd>
+      <dt>電話番号</dt><dd>00-0000-0000（サンプル）</dd>
+      <dt>免許番号</dt><dd>東京都知事（0）第00000号（サンプル）</dd>
+    </dl>
+    <nav><a href="#top">会社概要</a><a href="#top">プライバシーポリシー</a></nav>
+    <p class="credit">このページは、不動産オーナー向けLPの制作サンプルです。構成・原稿・デザイン・コーディング・計測の設計：MY</p>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a class="btn-line" href="#line" data-cta="line_sticky">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>
+    LINEで無料診断をはじめる
+  </a>
+</div>
+
+<script>
+  // 事例：公開後に追加・修正しやすいよう、ここの配列だけを書き換えれば表示が変わる
+  const CASES = [
+    { who: "築22年・木造アパート（8室）", area: "埼玉県", situation: "借り上げ賃料を1割下げたいと書面で連絡があった", choice: "近くの家賃と入居率を調べ、根拠をそろえて条件を交渉", result: "減額の幅を小さくし、次の見直しまでの期間を延ばして合意" },
+    { who: "築15年・RCマンション一棟", area: "千葉県", situation: "入居は満室が続くのに、修繕費の負担が年々増えていた", choice: "契約の条項を確認し、期間満了に合わせて契約を終了", result: "管理会社を自分で選び直し、家賃と修繕の両方を見える形にした" },
+    { who: "相続した築30年アパート", area: "東京都", situation: "契約の中身が分からず、大規模修繕の見積もりが届いた", choice: "10年の手取りを4つの選択肢で比べ、売却を選択", result: "サブリースを付けたまま売る場合と外して売る場合を比べ、外してから売りに出した" }
+  ];
+  document.getElementById("cases").innerHTML = CASES.map(c => `
+    <article class="case">
+      <div class="case-head"><b>${c.who}</b>${c.area}</div>
+      <ol>
+        <li><span>契約の状況</span>${c.situation}</li>
+        <li><span>選んだ選択肢</span>${c.choice}</li>
+        <li><span>結果</span>${c.result}</li>
+      </ol>
+    </article>`).join("");
+
+  // 計測：LINEボタンのクリックを GTM の dataLayer に送る（GA4 では cta_click イベントとして、cta_position ごとに数える）
+  window.dataLayer = window.dataLayer || [];
+  document.querySelectorAll("[data-cta]").forEach(a => a.addEventListener("click", () => {
+    window.dataLayer.push({ event: "cta_click", cta_position: a.dataset.cta });
+  }));
+</script>
+
+</body>
+</html>
